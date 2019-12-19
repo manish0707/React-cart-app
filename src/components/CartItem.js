@@ -8,7 +8,12 @@ class CartItem extends Component {
         console.log(this.props);
         this.props.setQuantity(id, number);
     }
+    removeCartItem = id => {
+        this.props.removeCartItem(id)
+        this.props.setQuantity(id, 0);
+    }
     render() {
+        console.log(this.props);
         const { name, price, image, id, quantity } = this.props;
         return (
             <div className={Styles.CartItemWrapper}>
@@ -23,7 +28,7 @@ class CartItem extends Component {
                     <button onClick={() => this.setNumberOfItem(id, 1)}>+</button>
                     <p>{quantity}</p>
                     <button onClick={() => this.setNumberOfItem(id, -1)}>-</button>
-                    <button style={{color : "red"}} onClick={() => this.props.removeCartItem(id)}>X</button>
+                    <button style={{color : "red"}} onClick={() => this.removeCartItem(id)}>X</button>
                 </div>
             </div>
         )

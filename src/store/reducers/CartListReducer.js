@@ -4,13 +4,18 @@ const initialState = {
 }
 
 const calculateCartTotal = cartList => {
-    const allprices = cartList.map(item => {
-        return item.price * item.quantity
-    });
-    const totalPrice = allprices.reduce((accumlator, currentValue) => {
-        return accumlator + currentValue;
-    });
-    return totalPrice;
+    if(cartList.length !== 0) {
+        const allprices = cartList.map(item => {
+            return item.price * item.quantity
+        });
+        console.log(allprices);
+        const totalPrice = allprices.reduce((accumlator, currentValue) => {
+            return accumlator + currentValue;
+        });
+        return totalPrice;
+    } else {
+        return 0;
+    }
 }
 
 const cartListReducer = (state = initialState, actions) => {
@@ -34,7 +39,13 @@ const cartListReducer = (state = initialState, actions) => {
         }
         }
         case 'remove_cartItem': {
-            const filteredData = state.cartList.filter(item => {
+            const updatedQuantity = state.cartList.map(item => {
+                if(item.id === actions.payload) {
+                    item.quantity = 0;
+                }
+                return item;
+            });
+            const filteredData = updatedQuantity.filter(item => {
                 return item.id !== actions.payload
             });
             return {
