@@ -5,8 +5,13 @@ import { set_quantity, set_cartTotal, remove_cartItem } from '../store/actions/C
 
 class CartItem extends Component {
     setNumberOfItem = (id, number) => {
-        console.log(this.props);
-        this.props.setQuantity(id, number);
+        if(number === -1) {
+            if(this.props.quantity !== 1) {
+                this.props.setQuantity(id, number);
+            }
+        }else {
+            this.props.setQuantity(id, number);
+        }
     }
     removeCartItem = id => {
         this.props.removeCartItem(id)
