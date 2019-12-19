@@ -1,0 +1,35 @@
+.grandTotalWrapper {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.buyNowButton {
+    padding: 10px 20px;
+    background-color: lightgreen;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+
+@media screen and (max-width : 600px) {
+    .grandTotalWrapper h1,a {
+        font-size: 20px;
+    }
+ }
+/* 
+ {
+    padding : "10px 20px",
+    backgroundColor : "lightgreen",
+    border : "none",
+    cursor : "pointer",
+    fontSize : "16px",
+    fontFamily : "inherit",
+    fontWeight : "bold",
+    borderRadius : "10px"
+} */
